@@ -1,0 +1,2 @@
+# Insects
+Another bug tracker
