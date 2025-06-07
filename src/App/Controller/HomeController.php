@@ -7,7 +7,7 @@ class HomeController{
      <html>
      <head>
      <meta charset='utf-8'>
-     <title>Home</title>
+     <title>Insects - Home</title>
      </head>
      <body>
      </body>
