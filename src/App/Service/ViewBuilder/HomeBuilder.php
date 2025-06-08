@@ -9,6 +9,6 @@ class HomeBuilder{
     // shares title and description with view
      extract(compact("title", "description"));
 
-     include __DIR__ . "/../../../templates/header.php";
+     include __DIR__ . "/../../../../templates/header.php";
  }
 }
