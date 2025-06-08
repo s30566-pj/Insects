@@ -6,11 +6,11 @@
     <title><?= $title ?? 'Insects bug tracker' ?></title>
     <link rel="stylesheet" href="/assets/header.css">
 </head>
-<main>
+<body>
     <header>
         <div class="logo">
-            <img src="/assets/logo.png" alt="Insects logo">
-            <p class="title"><?= $title ?></p>
+            <img src="/assets/img/logo.png" alt="Insects logo">
+            <p class="title"><?= htmlspecialchars($title) ?></p>
         </div>
     </header>
-</main>
+</body>

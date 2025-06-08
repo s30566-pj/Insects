@@ -1,17 +1,14 @@
 <?php
 namespace App\Controller;
+use App\Config;
 class HomeController{
- function index(){
-     echo "
-     <!DOCTYPE html>
-     <html lang='en'>
-     <head>
-     <meta charset='utf-8'>
-     <title>Insects - Home</title>
-     </head>
-     <body>
-     </body>
-     </html>
-     ";
+ public function buildHome(): void
+ {
+     $title = Config::getConfigValue('misc', 'title');
+     $description = Config::getConfigValue('misc', 'description');
+    // shares title and description with view
+     extract(compact("title", "description"));
+
+     include __DIR__ . "/../../../templates/header.php";
  }
 }
