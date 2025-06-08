@@ -5,18 +5,24 @@ use App\Service\PDO\MysqlController;
 use App\Model\User;
 class AuthController
 {
-    private $db;
+    private MysqlController $db;
 
     public function __construct(){
         $this->db = new MysqlController();
     }
     public function login():bool{
         $email = $_POST["email"];
-        $password = md5($_POST["password"]);
-        $userData = $this->db->fetchSingle("SELECT * FROM users WHERE email = :email AND password = :password");
+        $password = $_POST["password"];
+        $userData = $this->db->fetchSingle("SELECT * FROM users WHERE email = :email", ["email" => $email]);
         if($userData){
-            if ($userData["email"] === $email && $userData["password"] === $password){
-                $_SESSION['user'] = new User($userData["id"], $userData["name"], $userData["surname"], $userData["email"], $userData["password"], $userData["role"]);
+            if (password_verify($password, $userData["password"])){
+                $_SESSION['user'] = new User(
+                    $userData["id"],
+                    $userData["name"],
+                    $userData["surname"],
+                    $userData["email"],
+                    $userData["password"],
+                    $userData["role"]);
                 return true;
             }
         }
