@@ -3,10 +3,10 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Config;
-use App\Controller\HomeController;
+use App\Controller\HomeBuilder;
 
 // Load config data
 Config::load(__DIR__ . '/../config/config.php');
 
-$homeController = new HomeController();
+$homeController = new HomeBuilder();
 $homeController->buildHomePage();
