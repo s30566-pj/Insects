@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller;
+namespace App\Service\ViewBuilder;
 use App\Config;
 class HomeBuilder{
  public function buildHomePage(): void

@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Controller\ViewBuilder;
+namespace App\Service\ViewBuilder;
 
 class LoginBuilder
 {
+    function buildLoginPage()
+    {
 
+    }
 }
