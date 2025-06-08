@@ -8,6 +8,17 @@ class User{
     private $email;
     private $password;
     private $role;
+
+    public function __construct(int $id, string $name, string $surname, string $email, string $password, string $role)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->surname = $surname;
+        $this->email = $email;
+        $this->password = $password;
+        $this->role = $role;
+    }
+
     public function getId(){
         return $this->id;
     }
