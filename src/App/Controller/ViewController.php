@@ -17,4 +17,11 @@ class ViewController
         }
     }
 
+    public function getLoginPage($loginStatus = null){
+        if ($_SESSION['user'] == null){
+            $loginBuilder = new LoginBuilder();
+            $loginBuilder->buildLoginPage($loginStatus);
+        }
+    }
+
 }

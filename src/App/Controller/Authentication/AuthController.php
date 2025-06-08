@@ -3,6 +3,8 @@
 namespace App\Controller\Authentication;
 use App\Service\PDO\MysqlController;
 use App\Model\User;
+use PDOException;
+
 class AuthController
 {
     private MysqlController $db;
@@ -13,7 +15,12 @@ class AuthController
     public function login():bool{
         $email = $_POST["email"];
         $password = $_POST["password"];
-        $userData = $this->db->fetchSingle("SELECT * FROM users WHERE email = :email", ["email" => $email]);
+        try {
+            $userData = $this->db->fetchSingle("SELECT * FROM users WHERE email = :email", ["email" => $email]);
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+        var_dump($userData);
         if($userData){
             if (password_verify($password, $userData["password"])){
                 $_SESSION['user'] = new User(
