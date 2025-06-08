@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 use App\Config;
-class HomeController{
+class HomeBuilder{
  public function buildHomePage(): void
  {
      $title = Config::getConfigValue('misc', 'title');
