@@ -9,4 +9,4 @@ use App\Controller\HomeController;
 Config::load(__DIR__ . '/../config/config.php');
 
 $homeController = new HomeController();
-$homeController->buildHome();
+$homeController->buildHomePage();
