@@ -6,7 +6,7 @@
         } ?>
         <form method="POST" action="/login-submit">
             <input type="text" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
         </form>
         <p>Dont have an account? <a href="register.html">Register</a></p>
