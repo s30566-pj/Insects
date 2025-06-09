@@ -20,7 +20,6 @@ class AuthController
         } catch (PDOException $e) {
             die($e->getMessage());
         }
-        var_dump($userData);
         if($userData){
             if (password_verify($password, $userData["password"])){
                 $_SESSION['user'] = new User(
@@ -29,7 +28,7 @@ class AuthController
                     $userData["surname"],
                     $userData["email"],
                     $userData["password"],
-                    $userData["role"]);
+                    $userData["created_at"]);
                 return true;
             }
         }

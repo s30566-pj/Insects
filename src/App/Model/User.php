@@ -1,22 +1,24 @@
 <?php
 namespace App\Model;
 
+use DateTime;
+
 class User{
     private $id;
     private $name;
     private $surname;
     private $email;
     private $password;
-    private $role;
+    private $created_at;
 
-    public function __construct(int $id, string $name, string $surname, string $email, string $password, string $role)
+    public function __construct(int $id, string $name, string $surname, string $email, string $password, Datetime $created_at)
     {
         $this->id = $id;
         $this->name = $name;
         $this->surname = $surname;
         $this->email = $email;
         $this->password = $password;
-        $this->role = $role;
+        $this->created_at = $created_at;
     }
 
     public function getId(){
@@ -34,9 +36,6 @@ class User{
     public function getPassword(){
         return $this->password;
     }
-    public function getRole(){
-        return $this->role;
-    }
     public function setName($name){
         $this->name = $name;
     }
@@ -49,7 +48,9 @@ class User{
     public function setPassword($password){
         $this->password = $password;
     }
-    public function setRole($role){
-        $this->role = $role;
+
+    public function getCreatedAt(): DateTime
+    {
+        return $this->created_at;
     }
 }
