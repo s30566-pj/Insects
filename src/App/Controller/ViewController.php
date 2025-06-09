@@ -8,7 +8,7 @@ use App\Service\ViewBuilder\HomeBuilder;
 class ViewController
 {
     public function getStartPage(){
-        if ($_SESSION['user'] == null){
+        if (! isset($_SESSION['user'])){
             $loginBuilder = new LoginBuilder();
             $loginBuilder->buildLoginPage();
         } else{
@@ -18,7 +18,7 @@ class ViewController
     }
 
     public function getLoginPage($loginStatus = null){
-        if ($_SESSION['user'] == null){
+        if (! isset($_SESSION['user'])){
             $loginBuilder = new LoginBuilder();
             $loginBuilder->buildLoginPage($loginStatus);
         }
