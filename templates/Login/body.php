@@ -1,12 +1,23 @@
 <main>
     <h1>Login.</h1>
-    <div class="login-form">
-            <?= $loginStatus === false ? "<p>Invalid email or password!</p>" : '';?>
-        <form method="POST" action="/login-submit">
-            <input type="text" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="submit" value="Login">
-        </form>
-        <p>Dont have an account? <a href="register.html">Register</a></p>
+    <div class="login-wrapper">
+        <div class="login-box">
+            <div class="loginHead">
+                <h3>Login</h3>
+            </div>
+            <div class="login-form">
+                <form method="POST" action="/login-submit">
+                    <?= $loginStatus === false ? "<p id='invalid'>Invalid email or password!</p>" : '';?>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" placeholder="Email" required>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+            <div class="login-footer">
+                <p>Dont have an account? <a href="register.html">Register</a></p>
+            </div>
+        </div>
     </div>
 </main>

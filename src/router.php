@@ -8,14 +8,12 @@ $viewController = new ViewController();
 
 $base = '/Insects/src/router.php';
 $path = str_starts_with($path, $base) ? substr($path, strlen($base)) : $path;
-var_dump($path);
 
 switch ($path) {
     case '/':
         $viewController->getStartPage();
         break;
     case '/login-submit':
-        var_dump((new AuthController())->login());
         $viewController->getLoginPage((new AuthController())->login());
         break;
 

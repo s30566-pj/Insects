@@ -6,6 +6,11 @@
     <title><?= $title ?? 'Insects bug tracker' ?></title>
     <link rel="stylesheet" href="/assets/header.css">
     <link rel="stylesheet" href="/assets/style.css">
+    <?php if (!empty($styles)): ?>
+        <?php foreach ($styles as $style): ?>
+            <link rel="stylesheet" href="<?= htmlspecialchars($style) ?>">
+        <?php endforeach; ?>
+    <?php endif; ?>
 </head>
 <body>
     <header>
