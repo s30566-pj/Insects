@@ -40,4 +40,6 @@ class ViewController
 
     }
 
+    public function getCreateOrganizationPage($status=null){}
+
 }

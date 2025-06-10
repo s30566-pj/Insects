@@ -17,4 +17,11 @@
         <div class="logo">
             <img src="/assets/img/logo.png" alt="Insects logo">
         </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+
+            </ul>
+        </div>
     </header>
