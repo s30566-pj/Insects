@@ -4,7 +4,7 @@ namespace App\Controller\Authentication;
 use App\Service\PDO\MysqlController;
 use App\Model\User;
 use PDOException;
-
+use DateTime;
 class AuthController
 {
     private MysqlController $db;
@@ -27,11 +27,11 @@ class AuthController
             if (password_verify($password, $userData["password"])){
                 $_SESSION['user'] = new User(
                     $userData["id"],
-                    $userData["name"],
+                    $userData["first_name"],
                     $userData["surname"],
                     $userData["email"],
                     $userData["password"],
-                    $userData["created_at"]);
+                    new DateTime($userData["created_at"])); //I should handle exception but idgaf for now
                 return true;
             }
         }
