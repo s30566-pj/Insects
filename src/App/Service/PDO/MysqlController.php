@@ -19,12 +19,12 @@ public function __construct(){
     $this->mysqlConfig = Config::getConfigArray('db');
 }
 
-public function getMysqlConfig(){
+private function getMysqlConfig(){
     return $this->mysqlConfig;
 }
 
 // Method is setting PDO to conn variable so it can be used in other
-private function getMysqlConnect(): PDO{
+protected function getMysqlConnect(): PDO{
     if ($this->conn !== null){
         return $this->conn;
     }
@@ -48,6 +48,8 @@ public function fetchSingle(string $query, array $params = []): array|bool{
     $statement->execute($params);
     return $statement->fetch(PDO::FETCH_ASSOC);
 }
+
+
 
 
 

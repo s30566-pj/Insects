@@ -13,6 +13,9 @@ class AuthController
         $this->db = new MysqlController();
     }
     public function login():bool{
+        if (!isset($_POST['email']) && !isset($_POST['password'])){
+            return false;
+        }
         $email = $_POST["email"];
         $password = $_POST["password"];
         try {

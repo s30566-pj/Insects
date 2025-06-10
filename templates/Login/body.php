@@ -16,7 +16,7 @@
                 </form>
             </div>
             <div class="login-footer">
-                <p>Dont have an account? <a href="register.html">Register</a></p>
+                <p>Dont have an account? <a href="/register">Register</a></p>
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Service\ViewBuilder\LoginBuilder;
 use App\Service\ViewBuilder\HomeBuilder;
-
+use App\Service\ViewBuilder\RegisterBuilder;
 class ViewController
 {
     public function getStartPage(){
@@ -21,7 +21,23 @@ class ViewController
         if (! isset($_SESSION['user'])){
             $loginBuilder = new LoginBuilder();
             $loginBuilder->buildLoginPage($loginStatus);
+        } else{
+            $this->getStartPage();
         }
+    }
+
+    public function getRegisterPage($status=null)
+    {
+        if ($status === true){
+            $this->getStartPage();
+            return;
+        }
+        if (! isset($_SESSION['user'])){
+            $registerBuilder = new RegisterBuilder();
+            $registerBuilder->buildRegisterPage($status);
+            return;
+        }
+
     }
 
 }
