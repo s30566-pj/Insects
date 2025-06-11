@@ -23,6 +23,10 @@ switch ($path) {
         break;
         case '/register-submit':
             $viewController->getRegisterPage((new UserController())->registerUser());
+            break;
+            case '/create-organization':
+                $viewController->getCreateOrganizationPage();
+                break;
 
 
 }
