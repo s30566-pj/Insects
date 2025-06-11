@@ -1,23 +1,62 @@
 <main>
     <h1>Organization.</h1>
-    <div class="organization-wrapper">
-        <div class="organization-box">
-            <div class="organizationHead">
+    <div class="createOrganization-wrapper">
+        <div class="createOrganization-box">
+            <div class="createOrganizationHead">
                 <h3>Create Organization</h3>
             </div>
-            <div class="login-form">
-                <form method="POST" action="/login-submit">
-                    <?= $loginStatus === false ? "<p id='invalid'>Invalid email or password!</p>" : '';?>
-                    <label for="email">Email</label>
-                    <input type="text" name="email" placeholder="Email" required>
-                    <label for="password">Password</label>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <input type="submit" value="Login">
+            <div class="createOrganization-form">
+                <form method="POST" action="/organization-submit" enctype="multipart/form-data">
+                    <label for="Logo">Organization Picture</label>
+                    <img id="organizationPicturePreview" src="/assets/img/placeholder500x500.png" alt="Organization Picture">
+                    <input type="file" id="organizationPicture" name="organizationPicture" placeholder="organizationPicture" accept="image/*" required>
+                    <label for="name">OrganizationName</label>
+                    <input type="text" id="organizationName" name="organizationName" placeholder="Organization Name" required>
+                    <label for="organizationIdentifier">Identifier</label>
+                    <input type="text" id="organizationIdentifier" readonly>
+                    <input type="submit" value="CreateOrganization">
                 </form>
             </div>
             <div class="login-footer">
-                <p>Dont have an account? <a href="/register">Register</a></p>
+                <p>Ask your co-worker to invite you to their organization.</a></p>
             </div>
         </div>
     </div>
 </main>
+
+<script>
+    const nameInput = document.getElementById('organizationName');
+    const idenInput = document.getElementById('organizationIdentifier');
+    function randomFourDigit() {
+        return Math.floor(Math.random() * 9000) + 1000;
+    }
+    const suffix = randomFourDigit();
+
+    nameInput.addEventListener('input', () => {
+        // remove strange characters
+        let iden = nameInput.value
+            .trim()
+            .toLowerCase()
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')  //diacritical
+            .replace(/\s+/g, '-')
+            .replace(/[^a-z0-9-]/g, '')  // disallowed
+            .replace(/-+/g, '-');  // only one '-'
+        idenInput.value = `${iden} #${suffix}`;
+    });
+
+
+    const picInput = document.getElementById('organizationPicture');
+    const preview  = document.getElementById('organizationPicturePreview');
+    const placeholderSrc = preview.src;
+
+    picInput.addEventListener('change', () => {
+        const file = picInput.files[0];
+        if (!file) {
+            preview.src = placeholderSrc;
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = () => preview.src = reader.result;
+        reader.readAsDataURL(file);
+    });
+</script>
