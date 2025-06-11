@@ -36,4 +36,11 @@ class UserController extends MysqlController
         return $exec;
     }
 
+    public function isUserInAnyOrganization($id):bool{
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("SELECT user_id FROM user_organization WHERE user_id = :id");
+        $stmt->execute(['id' => $id]);
+        return (bool) $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 }
