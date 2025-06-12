@@ -6,20 +6,22 @@ class Organization
 {
     private $id;
     private $name;
-    private $identifier;
     private $created_by;
     private $created_at;
-    private $hashTag;
+    private $identifier;
     private $logo_path;
+    private $hashTag;
+
 
     public function __construct(int $id, string $name, string $identifier, string $created_by, string $created_at, string $hashTag, string $logo_path){
         $this->id = $id;
         $this->name = $name;
-        $this->identifier = $identifier;
         $this->created_by = $created_by;
         $this->created_at = $created_at;
-        $this->hashTag = $hashTag;
+        $this->identifier = $identifier;
         $this->logo_path = $logo_path;
+        $this->hashTag = $hashTag;
+
 }
 public function getId() : int{
         return $this->id;
