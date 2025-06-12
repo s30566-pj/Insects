@@ -13,7 +13,7 @@
                     <label for="name">OrganizationName</label>
                     <input type="text" id="organizationName" name="organizationName" placeholder="Organization Name" required>
                     <label for="organizationIdentifier">Identifier</label>
-                    <input type="text" id="organizationIdentifier" readonly>
+                    <input type="text" id="organizationIdentifier" name="organizationIdentifier" readonly>
                     <input type="submit" value="CreateOrganization">
                 </form>
             </div>
