@@ -3,6 +3,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use App\Controller\ViewController;
 use App\Controller\Authentication\AuthController;
 use App\Service\PDO\UserController;
+use App\Controller\OrganizationController;
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 
 $viewController = new ViewController();
@@ -21,12 +22,14 @@ switch ($path) {
     case '/register':
         $viewController->getRegisterPage();
         break;
-        case '/register-submit':
-            $viewController->getRegisterPage((new UserController())->registerUser());
-            break;
-            case '/create-organization':
-                $viewController->getCreateOrganizationPage();
-                break;
+    case '/register-submit':
+        $viewController->getRegisterPage((new UserController())->registerUser());
+        break;
+    case '/create-organization':
+        $viewController->getCreateOrganizationPage();
+        break;
+    case '/create-organization-submit':
+        $viewController->getCreateOrganizationPage((new OrganizationController())->createOrganization());
 
 
 }

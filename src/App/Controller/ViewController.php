@@ -34,8 +34,7 @@ class ViewController
         }
     }
 
-    public function getRegisterPage($status=null)
-    {
+    public function getRegisterPage($status=null){
         if ($status === true){
             $this->getStartPage();
             return;
@@ -48,7 +47,11 @@ class ViewController
 
     }
 
-    public function getCreateOrganizationPage(){
+    public function getCreateOrganizationPage($status=null){
+        if ($status === true){
+            $this->getStartPage();
+            return;
+        }
         if (! isset($_SESSION['user'])){
             $orgBuilder = new CreateOrganizationBuilder();
             $orgBuilder->buildCreateOrganizationPage();

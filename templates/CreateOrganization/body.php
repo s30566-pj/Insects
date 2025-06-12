@@ -6,7 +6,7 @@
                 <h3>Create Organization</h3>
             </div>
             <div class="createOrganization-form">
-                <form method="POST" action="/organization-submit" enctype="multipart/form-data">
+                <form method="POST" action="/create-organization-submit" enctype="multipart/form-data">
                     <label for="Logo">Organization Picture</label>
                     <img id="organizationPicturePreview" src="/assets/img/placeholder500x500.png" alt="Organization Picture">
                     <input type="file" id="organizationPicture" name="organizationPicture" placeholder="organizationPicture" accept="image/*" required>
