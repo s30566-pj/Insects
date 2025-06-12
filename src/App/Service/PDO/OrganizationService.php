@@ -3,10 +3,12 @@
 namespace App\Service\PDO;
 
 use App\Model\Organization;
+use DateTime;
 use PDO;
 
 class OrganizationService extends MysqlController{
-    public function createOrganization($name, $identifier, $hashTag, $target){
+    public function createOrganization($name, $identifier, $hashTag, $target): void
+    {
         $created_by = $_SESSION['user']->getId();
 
         $conn = $this->getMysqlConnect();
@@ -32,23 +34,54 @@ class OrganizationService extends MysqlController{
 
 
         if($status === true){
-            $this->getOrganizationByIdentifier($identifier);
+            $_SESSION['organization'] = $this->getOrganizationByIdentifier($identifier);
+            setcookie("organization", $_SESSION['organization'], time() + (86400 * 30));
         }
     }
 
-    public function getOrganizationByIdentifier($identifier){
+
+    public function getUserOrganizations($id){
         $conn = $this->getMysqlConnect();
-        $stmt = $conn->prepare("SELECT * FROM organizations WHERE identifier = :identifier");
-        $stmt->execute([
-            'identifier' => $identifier
-        ]);
+        $stmt = $conn->prepare("SELECT * FROM user_organization");
+    }
+
+    public function getOrganizationByIdentifier($identifier): Organization|false
+    {
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("SELECT o.id, o.name, CONCAT(u.first_name, ' ', u.surname) AS created_by, o.created_at, o.identifier, o.logo_path, o.hashTag FROM organizations o JOIN users u ON o.created_by = u.id WHERE identifier = :identifier");
+        $stmt->execute(['identifier' => $identifier]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $_SESSION['organization'] = new Organization($result['id'],
-            $result['name'],
-            $result['identifier'],
-            $result['created_by'],
-            $result['created_at'],
-            $result['logo_path'],
-            $result['hashTag']);
+        if ($result){
+            return new Organization(
+                $result['id'],
+                $result['name'],
+                $result['created_by'],
+                new DateTime($result['created_at']),
+                $result['identifier'],
+                $result['logo_path'],
+                $result['hashTag']
+            );
+        }
+        return false;
+    }
+
+    public function getOrganizationsByUserId($id): array{
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("SELECT o.id, o.name, CONCAT(u.first_name, ' ', u.surname) AS created_by, o.created_at, o.identifier, o.logo_path, o.hashTag FROM organizations o JOIN user_organization uo ON o.id = uo.organization_id AND uo.user_id = :id JOIN users u ON o.created_by = u.id");
+        $stmt->execute(['id' => $id]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $organizations = [];
+        foreach ($result as $row){
+            $organizations[] = new Organization(
+                $row['id'],
+                $row['name'],
+                $row['created_by'],
+                new DateTime($row['created_at']),
+                $row['identifier'],
+                $row['logo_path'],
+                $row['hashTag']
+            );
+        }
+        return $organizations;
     }
 }

@@ -1,5 +1,6 @@
 <?php
 namespace App\Service\PDO;
+use App\Model\Organization;
 use PDO;
 use PDOException;
 class UserController extends MysqlController
@@ -37,10 +38,15 @@ class UserController extends MysqlController
     }
 
     public function isUserInAnyOrganization($id):bool{
+        $orgService = new OrganizationService();
         $conn = $this->getMysqlConnect();
         $stmt = $conn->prepare("SELECT user_id FROM user_organization WHERE user_id = :id");
         $stmt->execute(['id' => $id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
         return (bool) $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+
 
 }

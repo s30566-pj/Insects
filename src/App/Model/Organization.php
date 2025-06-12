@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use DateTime;
+
 class Organization
 {
     private $id;
@@ -13,7 +15,7 @@ class Organization
     private $hashTag;
 
 
-    public function __construct(int $id, string $name, string $identifier, string $created_by, string $created_at, string $hashTag, string $logo_path){
+    public function __construct(int $id, string $name, string $created_by, DateTime $created_at, string $identifier, string $logo_path, string $hashTag ){
         $this->id = $id;
         $this->name = $name;
         $this->created_by = $created_by;

@@ -47,7 +47,7 @@ class ViewController
 
     }
 
-    public function getCreateOrganizationPage($status=null){
+    public function getCreateOrganizationPage($status=null): void{
         if ($status === true){
             $this->getStartPage();
             return;
