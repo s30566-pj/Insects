@@ -35,7 +35,7 @@ class OrganizationService extends MysqlController{
 
         if($status === true){
             $_SESSION['organization'] = $this->getOrganizationByIdentifier($identifier);
-            setcookie("organization", $_SESSION['organization'], time() + (86400 * 30));
+            setcookie("organization", $_SESSION['organization']->getId(), time() + (86400 * 30));
         }
     }
 
@@ -83,5 +83,25 @@ class OrganizationService extends MysqlController{
             );
         }
         return $organizations;
+    }
+
+    public function getOrganizationById($id): Organization|false
+    {
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("SELECT o.id, o.name, CONCAT(u.first_name, ' ', u.surname) AS created_by, o.created_at, o.identifier, o.logo_path, o.hashTag FROM organizations o JOIN users u ON o.created_by = u.id WHERE o.id = :id");
+        $stmt->execute(['id' => $id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result){
+            return new Organization(
+                $result['id'],
+                $result['name'],
+                $result['created_by'],
+                new DateTime($result['created_at']),
+                $result['identifier'],
+                $result['logo_path'],
+                $result['hashTag']
+            );
+        }
+        return false;
     }
 }

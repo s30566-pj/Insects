@@ -48,7 +48,7 @@ class OrganizationController
         return true;
     }
 
-    private function validateImage($logo){
+    private function validateImage($logo):bool{
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $mimeType = finfo_file($finfo, $logo['tmp_name']);
         finfo_close($finfo);
@@ -56,6 +56,10 @@ class OrganizationController
             return false;
         }
         return true;
+    }
+
+    public function saveOrgToSession($id):void{
+        $_SESSION["organization"] = (new OrganizationService())->getOrganizationById($id);
     }
 
 }

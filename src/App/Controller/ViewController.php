@@ -22,7 +22,6 @@ class ViewController
     public function getLoginPage($loginStatus = null)
     {
         $userController = new UserController();
-        var_dump($userController->isUserInAnyOrganization($_SESSION['user']->getId()));
         if (!isset($_SESSION['user'])) {
             $loginBuilder = new LoginBuilder();
             $loginBuilder->buildLoginPage($loginStatus);
@@ -52,7 +51,7 @@ class ViewController
             $this->getStartPage();
             return;
         }
-        if (! isset($_SESSION['user'])){
+        if (! isset($_SESSION['organization'])){
             $orgBuilder = new CreateOrganizationBuilder();
             $orgBuilder->buildCreateOrganizationPage();
             return;
