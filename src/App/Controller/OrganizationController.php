@@ -43,8 +43,10 @@ class OrganizationController
         die("Error uploading file");
     }
 
+    $relativePath = "public/img/$year/$month/$hashTag/$filename";
+
     $OrganizationService = new OrganizationService();
-    $OrganizationService->createOrganization($name, $identifier, $hashTag, $target);
+    $OrganizationService->createOrganization($name, $identifier, $hashTag, $relativePath);
         return true;
     }
 
