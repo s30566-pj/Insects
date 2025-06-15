@@ -17,8 +17,6 @@ class ViewController
         } elseif (! isset($_SESSION['organization'])){
             $this->getSelectOrganizationPage();
         }
-
-
         else{
             $homeBuilder = new HomeBuilder();
             $homeBuilder->buildHomePage();
