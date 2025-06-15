@@ -34,8 +34,9 @@ switch ($path) {
         $viewController->getCreateOrganizationPage((new OrganizationController())->createOrganization());
         break;
     case '/select-organization':
-        ((new OrganizationController())->saveOrgToSession($_GET['org']));
+        (new OrganizationController())->saveOrgToSession($_GET['org']);
         $viewController->getStartPage();
+        break;
     case '/logout':
         ((new SessionService())->logout());
         header('Location: /');
