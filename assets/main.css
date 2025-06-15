@@ -1,4 +1,38 @@
 main{
     height: 100%;
     width: calc(100vw - 100px);
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+main > .box{
+    width: 40%;
+    height: 60%;
+    aspect-ratio: 1/2;
+    background-color: rgba(170, 149, 118, 0.76);
+    margin: 50px;
+}
+
+.issues-list{
+    width: 100%;
+    height: 70%;
+}
+.comments{
+    width: 100%;
+    height: 30%;
+    box-shadow: 0 0 10px #232323;
+}
+.box-header{
+    width: 100%;
+    height: 20px;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.box-body{
+    height: calc(100% - 20px);
+    overflow-y: auto;
 }

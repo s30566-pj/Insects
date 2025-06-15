@@ -24,13 +24,9 @@
         <div class="issues-list" id="unassigned">
             <div class="box-header">Unassigned</div>
             <div class="box-body"></div>
-            <div class="comments">
-                <div class="box-header">Assigned to me</div>
-                <div class="box-body"></div>
-            </div>
         </div>
         <div class="comments">
-            <div class="box-header">Assigned to me</div>
+            <div class="box-header">Comments</div>
             <div class="box-body"></div>
         </div>
 
@@ -41,13 +37,9 @@
         <div class="issues-list" id="reported-by-me">
             <div class="box-header">Reported by Me</div>
             <div class="box-body"></div>
-            <div class="comments">
-                <div class="box-header">Assigned to me</div>
-                <div class="box-body"></div>
-            </div>
         </div>
         <div class="comments">
-            <div class="box-header">Assigned to me</div>
+            <div class="box-header">Comments</div>
             <div class="box-body"></div>
         </div>
     </section>
@@ -57,10 +49,10 @@
         <div class="issues-list" id="reported-by-me">
             <div class="box-header">Recently resolved</div>
             <div class="box-body"></div>
-            <div class="comments">
-                <div class="box-header">Assigned to me</div>
-                <div class="box-body"></div>
-            </div>
+        </div>
+        <div class="comments">
+            <div class="box-header">Comments</div>
+            <div class="box-body"></div>
         </div>
     </section>
 </main>
