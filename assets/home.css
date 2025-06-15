@@ -1,0 +1,6 @@
+.homeSection{
+height: calc(100dvh - 100px); /* Includes header */
+}
+nav{
+    height: 100% ;
+}

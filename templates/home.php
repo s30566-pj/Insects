@@ -1,0 +1,67 @@
+<div class="homeSection">
+    <nav>
+        <ul>
+            <li>Dashboard</li>
+            <li>Issues</li>
+            <li>New Issue</li>
+        </ul>
+    </nav>
+<main>
+    <!--- Assigned to me --->
+    <section class="box">
+        <div class="issues-list" id="assigned-to-me">
+            <div class="box-header">Assigned to me</div>
+            <div class="box-body"></div>
+        </div>
+        <div class="comments">
+            <div class="box-header">Comments</div>
+            <div class="box-body"></div>
+        </div>
+    </section>
+
+    <!--- Unassigned --->
+    <section class="box">
+        <div class="issues-list" id="unassigned">
+            <div class="box-header">Unassigned</div>
+            <div class="box-body"></div>
+            <div class="comments">
+                <div class="box-header">Assigned to me</div>
+                <div class="box-body"></div>
+            </div>
+        </div>
+        <div class="comments">
+            <div class="box-header">Assigned to me</div>
+            <div class="box-body"></div>
+        </div>
+
+    </section>
+
+    <!--- Reported by me --->
+    <section class="box">
+        <div class="issues-list" id="reported-by-me">
+            <div class="box-header">Reported by Me</div>
+            <div class="box-body"></div>
+            <div class="comments">
+                <div class="box-header">Assigned to me</div>
+                <div class="box-body"></div>
+            </div>
+        </div>
+        <div class="comments">
+            <div class="box-header">Assigned to me</div>
+            <div class="box-body"></div>
+        </div>
+    </section>
+
+    <!--- Recently resolved --->
+    <section class="box">
+        <div class="issues-list" id="reported-by-me">
+            <div class="box-header">Recently resolved</div>
+            <div class="box-body"></div>
+            <div class="comments">
+                <div class="box-header">Assigned to me</div>
+                <div class="box-body"></div>
+            </div>
+        </div>
+    </section>
+</main>
+</div>
