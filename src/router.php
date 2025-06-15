@@ -35,7 +35,7 @@ switch ($path) {
         break;
     case '/select-organization':
         (new OrganizationController())->saveOrgToSession($_GET['org']);
-        $viewController->getStartPage();
+        header('Location: /');
         break;
     case '/logout':
         ((new SessionService())->logout());
