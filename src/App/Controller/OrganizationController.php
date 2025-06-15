@@ -47,6 +47,7 @@ class OrganizationController
 
     $OrganizationService = new OrganizationService();
     $OrganizationService->createOrganization($name, $identifier, $hashTag, $relativePath);
+    $_SESSION["organization"]=$OrganizationService->getOrganizationByIdentifier($identifier);
         return true;
     }
 
