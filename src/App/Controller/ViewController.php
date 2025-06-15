@@ -28,7 +28,10 @@ class ViewController
         } elseif (! $userController->isUserInAnyOrganization($_SESSION['user']->getId())){
             $createOrgBuilder = new CreateOrganizationBuilder();
             $createOrgBuilder->buildCreateOrganizationPage();
-        } else{
+        } elseif (isset($_COOKIE["organizationId"])){
+
+        }
+        else{
             $this->getStartPage();
         }
     }

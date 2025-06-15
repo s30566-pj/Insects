@@ -47,6 +47,16 @@ class UserController extends MysqlController
         return (bool) $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function isUserInRequestedOrganization($user_id, $organization_id): bool{
+        $orgService = new OrganizationService();
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("SELECT user_id, organization_id FROM user_organization WHERE user_id = :user_id AND organization_id = :organization_id");
+        $stmt->execute(['user_id' => $user_id, 'organization_id' => $organization_id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return (bool) $result;
+
+    }
+
 
 
 
