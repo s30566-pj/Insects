@@ -8,5 +8,6 @@ class HomeBuilder{
      $description = Config::getConfigValue('misc', 'description');
 
      include __DIR__ . "/../../../../templates/header.php";
+     include __DIR__ . "/../../../../templates/home.php";
  }
 }
