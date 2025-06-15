@@ -42,7 +42,7 @@
 
         select.addEventListener("change", updateLogo);
 
-        // Pokaż logo od razu po załadowaniu, jeśli coś jest wybrane
+        // Show logo if initially chosen
         updateLogo();
     });
 </script>
