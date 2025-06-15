@@ -38,7 +38,7 @@ switch ($path) {
         header('Location: /');
         break;
     case '/logout':
-        ((new SessionService())->logout());
+        (new SessionService())->logout();
         header('Location: /');
         break;
 
