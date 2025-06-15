@@ -1,20 +1,48 @@
 <main>
-    <h1>Login.</h1>
+    <h1>Organization.</h1>
     <div class="select-wrapper">
-        <?php foreach ($orgs as $org) ?>
-        <a href="/select-organization?org_id=<?= urldecode($org->getId()) ?>" class="button">Select Organization
             <div class="select-box">
                 <div class="selectHead">
-                    <h3>Select.</h3>
+                    <h3>Select</h3>
                 </div>
-                <div class="select-main">
-                    <img src="<?= htmlspecialchars($org->getLogoPath()) ?>">
-                    <p><?= htmlspecialchars($org->getIdentifier()) ?></p>
+                <div class="select-form">
+                    <form method="GET" action="/select-organization">
+                        <img id="org-logo" src="/assets/img/placeholder500x500.png" style="display: none;">
+                        <select name="org" id="org">
+                            <?php foreach ($orgs as $org): ?>
+                            <option value="<?= $org->getId();?>" data-logo="<?= str_replace('#', '%23', $org->getLogoPath());?>"><?=$org->getIdentifier();?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <input type="submit" value="Select Organization">
+                    </form>
                 </div>
                 <div class="login-footer">
-                    <p>Dont have an account? <a href="/register">Register</a></p>
+                    <p>Woof!</p>
                 </div>
             </div>
-        </a>
     </div>
 </main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const select = document.getElementById("org");
+        const logo = document.getElementById("org-logo");
+
+        function updateLogo() {
+            const selectedOption = select.options[select.selectedIndex];
+            const logoPath = selectedOption.getAttribute("data-logo");
+
+            if (logoPath) {
+                logo.src = '/'+logoPath;
+                logo.style.display = "block";
+            } else {
+                logo.style.display = "none";
+            }
+        }
+
+        select.addEventListener("change", updateLogo);
+
+        // Pokaż logo od razu po załadowaniu, jeśli coś jest wybrane
+        updateLogo();
+    });
+</script>

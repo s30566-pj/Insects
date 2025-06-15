@@ -10,6 +10,7 @@ class OrgSelectBuilder
         $title = Config::getConfigValue('misc', 'title');
         $description = Config::getConfigValue('misc', 'description');
         $organizationsService = new OrganizationService();
+        $styles = ['/assets/selectOrgBody.css'];
         $orgs=$organizationsService->getOrganizationsByUserId($_SESSION["user"]->getId());
 
         include __DIR__ . "/../../../../templates/header.php";

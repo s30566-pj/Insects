@@ -3,17 +3,23 @@
 namespace App\Controller;
 
 use App\Service\PDO\UserController;
+use App\Service\SetOrganizationService;
 use App\Service\ViewBuilder\CreateOrganizationBuilder;
 use App\Service\ViewBuilder\LoginBuilder;
 use App\Service\ViewBuilder\HomeBuilder;
+use App\Service\ViewBuilder\OrgSelectBuilder;
 use App\Service\ViewBuilder\RegisterBuilder;
 class ViewController
 {
     public function getStartPage(){
         if (! isset($_SESSION['user'])){
-            $loginBuilder = new LoginBuilder();
-            $loginBuilder->buildLoginPage();
-        } else{
+            $this->getLoginPage();
+        } elseif (! isset($_SESSION['organization'])){
+            $this->getSelectOrganizationPage();
+        }
+
+
+        else{
             $homeBuilder = new HomeBuilder();
             $homeBuilder->buildHomePage();
         }
@@ -28,8 +34,8 @@ class ViewController
         } elseif (! $userController->isUserInAnyOrganization($_SESSION['user']->getId())){
             $createOrgBuilder = new CreateOrganizationBuilder();
             $createOrgBuilder->buildCreateOrganizationPage();
-        } elseif (isset($_COOKIE["organizationId"])){
-
+        } elseif (isset($_COOKIE["organizationId"])&& !isset($_SESSION["organization"])){
+            SetOrganizationService::setOrganization();
         }
         else{
             $this->getStartPage();
@@ -59,6 +65,23 @@ class ViewController
             $orgBuilder->buildCreateOrganizationPage();
             return;
         }
+    }
+
+    public function getSelectOrganizationPage($status=null): void{
+        $userController = new UserController();
+        if ($status === true){
+            $this->getStartPage();
+            return;
+        }
+        if (! isset($_SESSION['organization']) && $userController->isUserInAnyOrganization($_SESSION['user']->getId()) ) {
+            $orgSelectBuilder = new OrgSelectBuilder();
+            $orgSelectBuilder->buildPage();
+            return;
+        }
+        else{
+            $this->getCreateOrganizationPage();
+        }
+        return; //idk if here shouldn't be getStartPage
     }
 
 }
