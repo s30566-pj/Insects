@@ -3,7 +3,7 @@
     <nav>
         <ul>
             <li><a href="/">Dashboard</a></li>
-            <li><a href="/">Issues</a></li>
+            <li><a href="/issues">Issues</a></li>
             <li><a href="/create-ticket">New Issue</a></li>
         </ul>
     </nav>
