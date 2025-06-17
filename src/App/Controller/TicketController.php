@@ -8,10 +8,14 @@ use App\Service\PDO\TicketService;
 class TicketController
 {
     public function createTicket(): bool{
-        $organizationId = $_POST['organization']->getId();
+        $organizationId = $_SESSION['organization']->getId();
         $title = $_POST['ticket-title'];
         $description = $_POST['ticket-description'];
-        $assigned_to = $_POST['assign-to'];
+        if ($_POST['assign-to'] === ""){
+            $assignTo = null;
+        }else {
+            $assigned_to = $_POST['assign-to'];
+        }
         $reported_by = $_SESSION['user']->getId();
 
         $ticketService = new TicketService();
