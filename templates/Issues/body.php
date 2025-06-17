@@ -17,7 +17,7 @@
                         </tr>
                         <?php foreach ($issues as $issue):?>
                             <?= "<tr>"
-                            . "<td>".htmlspecialchars($issue["title"])."</td>" . "<td>".htmlspecialchars($issue["status"])."</td>". "<td>".htmlspecialchars($issue["reported_by"])."</td>" . "<td>".htmlspecialchars($issue["reported_on"])."</td>" . "<td>".htmlspecialchars($issue["assigned_to"])."</td>" .
+                            . "<td>".htmlspecialchars($issue["title"])."</td>" . "<td>".htmlspecialchars($issue["status"])."</td>". "<td>".htmlspecialchars($issue["reported_by"])."</td>" . "<td>".htmlspecialchars($issue["created_at"])."</td>" . "<td>".htmlspecialchars($issue["assigned_to"])."</td>" .
                             "</tr>"?>
                         <?php endforeach ?>
                     </table>
