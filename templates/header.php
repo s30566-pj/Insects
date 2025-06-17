@@ -21,6 +21,9 @@
         <div class="menu">
             <ul>
                 <li><a href="/">Home</a></li>
+                <?php if (isset($_SESSION['organization'])): ?>
+                    <li><a href="/org-select">Organization</a></li>
+                <?php endif; ?>
                 <?php if (isset($_SESSION['user'])): ?>
                 <li><a href="/logout">Logout</a></li>
                 <?php endif; ?>
