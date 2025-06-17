@@ -23,10 +23,6 @@
                     </table>
                 </div>
             </div>
-            <div class="comments">
-                <div class="box-header">Comments</div>
-                <div class="box-body"></div>
-            </div>
         </section>
     </main>
 </div>
