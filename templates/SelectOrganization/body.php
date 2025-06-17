@@ -17,7 +17,7 @@
                     </form>
                 </div>
                 <div class="login-footer">
-                    <p>Need new organization? <a href="/create-organization">Create one!</a></p>
+                    <p>Need a new organization? <a href="/create-organization">Create one!</a></p>
                 </div>
             </div>
     </div>
