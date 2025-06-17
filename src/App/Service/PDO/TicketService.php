@@ -29,5 +29,43 @@ class TicketService extends MysqlController
         ]);
     }
 
+    public function getIssuesAssignedToUser($user_id, $org_id): array{
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("SELECT * FROM tickets WHERE assigned_to = :user_id AND organization_id = :org_id");
+        $stmt->execute([
+            "user_id" => $user_id,
+            "org_id" => $org_id
+        ]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function getIssuesInOrganization($org_id): array{
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("SELECT * FROM tickets WHERE organization_id = :org_id");
+        $stmt->execute([
+            "org_id" => $org_id
+        ]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function getIssuesReportedByUser($user_id, $org_id): array{
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("SELECT * FROM tickets WHERE organization_id = :org_id AND reported_by = :user_id");
+        $stmt->execute([
+            "org_id" => $org_id,
+            "user_id" => $user_id
+        ]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function getIssuesRecentlyResolved($org_id): array{
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("SELECT * FROM tickets WHERE organization_id = :org_id AND resolved_at IS NOT NULL ORDER BY resolved_at DESC");
+        $stmt->execute([
+            "org_id" => $org_id
+        ]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
 
 }
