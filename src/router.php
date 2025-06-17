@@ -6,6 +6,7 @@ use App\Service\PDO\OrganizationService;
 use App\Service\PDO\UserController;
 use App\Controller\OrganizationController;
 use App\Service\SessionService;
+use App\Controller\TicketController;
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 
 $viewController = new ViewController();
@@ -35,6 +36,13 @@ switch ($path) {
         break;
     case '/select-organization':
         (new OrganizationController())->saveOrgToSession($_GET['org']);
+        header('Location: /');
+        break;
+    case '/create-ticket':
+        $viewController->getCreateTicketPage();
+        break;
+    case '/create-issue-submit':
+        (new TicketController())->createTicket();
         header('Location: /');
         break;
     case '/logout':
