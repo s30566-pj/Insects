@@ -20,3 +20,9 @@ header{
     object-fit: contain;
     margin: 0;
 }
+a {
+    all: unset;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
