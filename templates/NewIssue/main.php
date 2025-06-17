@@ -9,7 +9,7 @@
     </nav>
     <main>
             <section class="box">
-                <form method="POST" action="/createIssue">
+                <form method="POST" action="/create-issue-submit">
                     <div class="ticket-title" id="ticket-title">
                         <label for="ticket-title" id="ticket-title-label">Title</label>
                         <input type="text" name="ticket-title" id="ticket-title" placeholder="Ticket Title">
