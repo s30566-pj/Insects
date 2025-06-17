@@ -73,7 +73,7 @@ class ViewController
             $this->getStartPage();
             return;
         }
-        if (! isset($_SESSION['organization']) && $userController->isUserInAnyOrganization($_SESSION['user']->getId()) ) {
+        if ((! isset($_SESSION['organization']) && $userController->isUserInAnyOrganization($_SESSION['user']->getId())) || isset($_SESSION["organization"]) ) {
             $orgSelectBuilder = new OrgSelectBuilder();
             $orgSelectBuilder->buildPage();
             return;

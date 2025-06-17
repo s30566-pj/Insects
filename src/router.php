@@ -48,6 +48,9 @@ switch ($path) {
     case '/issues':
         $viewController->getIssuesPage();
         break;
+    case '/org-select':
+        $viewController->getSelectOrganizationPage();
+        break;
     case '/logout':
         (new SessionService())->logout();
         header('Location: /');
