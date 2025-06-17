@@ -6,6 +6,7 @@ use App\Service\PDO\UserController;
 use App\Service\SetOrganizationService;
 use App\Service\ViewBuilder\CreateOrganizationBuilder;
 use App\Service\ViewBuilder\CreateTicketBuilder;
+use App\Service\ViewBuilder\IssuesPageBuilder;
 use App\Service\ViewBuilder\LoginBuilder;
 use App\Service\ViewBuilder\HomeBuilder;
 use App\Service\ViewBuilder\OrgSelectBuilder;
@@ -87,6 +88,16 @@ class ViewController
         if (isset($_SESSION['user']) && isset($_SESSION['organization'])){
             $createTicketBuilder = new CreateTicketBuilder();
             $createTicketBuilder->buildCreateTicket();
+        } else{
+            header('Location: /');
+        }
+    }
+
+    public function getIssuesPage()
+    {
+        if (isset($_SESSION['user']) && isset($_SESSION['organization'])){
+            $issuesPageBuilder = new IssuesPageBuilder();
+            $issuesPageBuilder->buildIssuesPage();
         } else{
             header('Location: /');
         }

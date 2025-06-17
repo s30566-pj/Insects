@@ -45,6 +45,9 @@ switch ($path) {
         (new TicketController())->createTicket();
         header('Location: /');
         break;
+    case '/issues':
+        $viewController->getIssuesPage();
+        break;
     case '/logout':
         (new SessionService())->logout();
         header('Location: /');
