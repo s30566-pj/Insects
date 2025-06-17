@@ -41,7 +41,7 @@ class TicketService extends MysqlController
 
     public function getIssuesInOrganization($org_id): array{
         $conn = $this->getMysqlConnect();
-        $stmt = $conn->prepare("SELECT * FROM tickets WHERE organization_id = :org_id");
+        $stmt = $conn->prepare("SELECT t.id, o.name AS organization_name, t.title, t.description, t.status, CONCAT(u1.first_name, ' ', u1.surname) AS reported_by, CONCAT(u2.first_name, ' ', u2.surname) AS assigned_to, t.resolved_at, t.created_at, t.updated_at FROM tickets t JOIN organizations o ON t.organization_id = o.id JOIN users u1 ON t.reported_by = u1.id LEFT JOIN users u2 ON t.assigned_to = u2.id WHERE organization_id = :org_id");
         $stmt->execute([
             "org_id" => $org_id
         ]);
