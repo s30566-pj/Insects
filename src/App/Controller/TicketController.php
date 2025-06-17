@@ -15,7 +15,7 @@ class TicketController
         $reported_by = $_SESSION['user']->getId();
 
         $ticketService = new TicketService();
-        $ticketService->createTicket($organizationId, $title, $description, $assigned_to, $reported_by);
+        return $ticketService->createTicket($organizationId, $title, $description, $assigned_to, $reported_by);
 
 
     }
