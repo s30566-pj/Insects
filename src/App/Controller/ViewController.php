@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Service\PDO\UserController;
 use App\Service\SetOrganizationService;
 use App\Service\ViewBuilder\CreateOrganizationBuilder;
+use App\Service\ViewBuilder\CreateTicketBuilder;
 use App\Service\ViewBuilder\LoginBuilder;
 use App\Service\ViewBuilder\HomeBuilder;
 use App\Service\ViewBuilder\OrgSelectBuilder;
@@ -80,6 +81,15 @@ class ViewController
             $this->getCreateOrganizationPage();
         }
         return; //idk if here shouldn't be getStartPage
+    }
+
+    public function getCreateTicketPage(){
+        if (isset($_SESSION['user']) && isset($_SESSION['organization'])){
+            $createTicketBuilder = new CreateTicketBuilder();
+            $createTicketBuilder->buildCreateTicket();
+        } else{
+            header('Location: /');
+        }
     }
 
 }
