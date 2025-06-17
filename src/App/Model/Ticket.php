@@ -5,6 +5,7 @@ namespace App\Model;
 class Ticket
 {
     private $id;
+    private $organizationId;
     private $title;
     private $description;
     private $status;
@@ -12,8 +13,9 @@ class Ticket
     private $resolvedAt;
     private $assigned_to;
 
-    public function __construct($id, $title, $description, $status, $reportedBy, $resolvedAt, $assigned_to){
+    public function __construct($id, $organizationId, $title, $description, $status, $reportedBy, $resolvedAt, $assigned_to){
         $this->id = $id;
+        $this->organizationId = $organizationId;
         $this->title = $title;
         $this->description = $description;
         $this->status = $status;
@@ -42,6 +44,7 @@ class Ticket
     public function getReportedBy(){
         return $this->reportedBy;
     }
+    public function getOrganizationId(){}
     public function setTitle($title){
         $this->title = $title;
     }
