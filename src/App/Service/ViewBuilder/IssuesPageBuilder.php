@@ -10,7 +10,7 @@ class IssuesPageBuilder{
         $ticketService = new TicketService();
         $title = Config::getConfigValue('misc', 'title');
         $description = Config::getConfigValue('misc', 'description');
-        $styles = ['/assets/home.css', '/assets/nav.css', '/assets/main.css'];
+        $styles = ['/assets/home.css', '/assets/nav.css', '/assets/issuesMain.css'];
         $issues=$ticketService->getIssuesInOrganization($_SESSION['organization']->getId());
         include __DIR__ . "/../../../../templates/header.php";
         include __DIR__ . "/../../../../templates/Issues/body.php";

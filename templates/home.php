@@ -12,7 +12,7 @@
         <div class="issues-list" id="assigned-to-me">
             <div class="box-header">Assigned to me</div>
             <div class="box-body">
-                <table id="assigned-to-me-table">
+                <table id="assigned-to-me-table" class="issues-table">
                     <tr>
                         <th>Title</th><th>Status</th>
                     </tr>
@@ -35,7 +35,7 @@
         <div class="issues-list" id="unassigned">
             <div class="box-header">Unassigned</div>
             <div class="box-body">
-                <table id="unassigned-table">
+                <table id="unassigned-table" class="issues-table">
                     <tr>
                         <th>Title</th><th>Status</th>
                     </tr>
@@ -59,7 +59,7 @@
         <div class="issues-list" id="reported-by-me">
             <div class="box-header">Reported by Me</div>
             <div class="box-body">
-                <table id="reported-by-me-table">
+                <table id="reported-by-me-table" class="issues-table">
                     <tr>
                         <th>Title</th><th>Status</th>
                     </tr>
@@ -82,7 +82,7 @@
         <div class="issues-list" id="reported-by-me">
             <div class="box-header">Recently resolved</div>
             <div class="box-body">
-                <table id="recently-resolved-table">
+                <table id="recently-resolved-table" class="issues-table">
                     <tr>
                         <th>Title</th><th>Status</th>
                     </tr>

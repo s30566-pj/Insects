@@ -7,8 +7,8 @@ main{
     overflow-y: auto;
 }
 main > .box{
-    width: 40%;
-    height: 60%;
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
     aspect-ratio: 1/2;
     background-color: rgba(170, 149, 118, 0.76);
     margin: 50px;
@@ -18,11 +18,6 @@ main > .box{
     width: 100%;
     height: 70%;
     overflow-y: auto;
-}
-.comments{
-    width: 100%;
-    height: 30%;
-    box-shadow: 0 0 10px #232323;
 }
 .box-header{
     width: 100%;
@@ -38,7 +33,7 @@ main > .box{
     overflow-y: auto;
 }
 
-.issues-table {
+#issues-table {
     width: 100%;
     border-collapse: collapse;
     font-family: sans-serif;
@@ -46,14 +41,14 @@ main > .box{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.issues-table th,
-.issues-table td {
+#issues-table th,
+#issues-table td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-.issues-table th {
+#issues-table th {
     background-color: #77634B;
     color: white;
     text-transform: uppercase;
@@ -61,11 +56,11 @@ main > .box{
     font-size: 14px;
 }
 
-.issues-table tr:nth-child(even) {
+#issues-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.issues-table tr:hover {
+#issues-table tr:hover {
     background-color: #f1efe7;
     cursor: default;
 }
