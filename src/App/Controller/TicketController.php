@@ -19,4 +19,14 @@ class TicketController
 
 
     }
+
+    public function addComment(){
+        $ticket_id = $_POST['ticketId'];
+        $author_id = $_SESSION['user']->getId();
+        $content = $_POST['comment'];
+
+        $ticketService = new TicketService();
+        return $ticketService->createTicketComment($ticket_id, $author_id, $content);
+
+    }
 }

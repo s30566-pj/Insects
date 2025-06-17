@@ -18,5 +18,16 @@ class TicketService extends MysqlController
         ]);
     }
 
+    public function createTicketComment($ticketId, $author_id, $content): bool
+    {
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("INSERT INTO ticket_comments (`ticket_id`, `authosr_id`, `content`) VALUES (:ticket_id, :author_id, :content)");
+        return $stmt->execute([
+            'ticket_id' => $ticketId,
+            'author_id' => $author_id,
+            'content' => $content
+        ]);
+    }
+
 
 }
