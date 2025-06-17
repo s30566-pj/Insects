@@ -25,3 +25,9 @@ nav > ul li{
 li:hover{
     background-color: #5c4f38;
 }
+nav > a {
+    all: unset;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
