@@ -16,9 +16,9 @@
                             <th>Title</th> <th>Status</th> <th>Reported by</th> <th>Reported on</th> <th>Assigned_to</th>
                         </tr>
                         <?php foreach ($issues as $issue):?>
-                            <?= "<tr>"
+                            <?= "<a href='/ticket?id=".$issue["id"]."'><tr>"
                             . "<td>".htmlspecialchars($issue["title"])."</td>" . "<td>".htmlspecialchars($issue["status"])."</td>". "<td>".htmlspecialchars($issue["reported_by"])."</td>" . "<td>".htmlspecialchars($issue["created_at"])."</td>" . "<td>".htmlspecialchars($issue["assigned_to"])."</td>" .
-                            "</tr>"?>
+                            "</tr></a>"?>
                         <?php endforeach ?>
                     </table>
                 </div>

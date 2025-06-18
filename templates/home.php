@@ -17,9 +17,9 @@
                         <th>Title</th><th>Status</th>
                     </tr>
                     <?php foreach ($assToMeIssue as $issue):?>
-                        <?= "<tr>"
+                        <?= "<a href='/ticket?id=".$issue["id"]."'><tr>"
                         . "<td>".$issue["title"]."</td>" . "<td>".$issue["status"]."</td>".
-                        "</tr>"?>
+                        "</tr></a>"?>
                     <?php endforeach ?>
                 </table>
             </div>
@@ -40,9 +40,9 @@
                         <th>Title</th><th>Status</th>
                     </tr>
                     <?php foreach ($unassigned as $issue):?>
-                        <?= "<tr>"
+                        <?= "<a href='/ticket?id=".$issue["id"]."'><tr>"
                         . "<td>".$issue["title"]."</td>" . "<td>".$issue["status"]."</td>".
-                        "</tr>"?>
+                        "</tr></a>"?>
                     <?php endforeach ?>
                 </table>
             </div>
@@ -64,9 +64,9 @@
                         <th>Title</th><th>Status</th>
                     </tr>
                     <?php foreach ($reportedByMe as $issue):?>
-                        <?= "<tr>"
+                        <?= "<a href='/ticket?id=".$issue["id"]."'><tr>"
                         . "<td>".$issue["title"]."</td>" . "<td>".$issue["status"]."</td>".
-                        "</tr>"?>
+                        "</tr></a>"?>
                     <?php endforeach ?>
                 </table>
             </div>
@@ -87,9 +87,9 @@
                         <th>Title</th><th>Status</th>
                     </tr>
                     <?php foreach ($recentlyResolved as $issue):?>
-                        <?= "<tr>"
+                        <?= "<a href='/ticket?id=".$issue["id"]."'><tr>"
                         . "<td>".$issue["title"]."</td>" . "<td>".$issue["status"]."</td>".
-                        "</tr>"?>
+                        "</tr></a>"?>
                     <?php endforeach ?>
                 </table>
             </div>
