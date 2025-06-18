@@ -4,6 +4,7 @@ namespace App\Service\ViewBuilder;
 
 use App\Config;
 use App\Service\PDO\TicketService;
+use App\Service\PDO\UserController;
 use DateTime;
 class IssuesPageBuilder{
     public function buildIssuesPage(){

@@ -57,7 +57,12 @@ class UserController extends MysqlController
 
     }
 
-
+    public function getUsersInOrganization($org_id): array{
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("SELECT uo.user_id, CONCAT(u.first_name, ' ', u.surname) AS name, uo.role FROM user_organization uo JOIN users u ON uo.user_id = u.id WHERE uo.organization_id = :org_id");
+        $stmt->execute(['org_id' => $org_id]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 
 
 }

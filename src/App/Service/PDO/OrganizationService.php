@@ -39,12 +39,6 @@ class OrganizationService extends MysqlController{
         }
     }
 
-
-    public function getUserOrganizations($id){
-        $conn = $this->getMysqlConnect();
-        $stmt = $conn->prepare("SELECT * FROM user_organization");
-    }
-
     public function getOrganizationByIdentifier($identifier): Organization|false
     {
         $conn = $this->getMysqlConnect();

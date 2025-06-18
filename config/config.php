@@ -11,5 +11,15 @@ return [
         'title' => 'Insects bug tracker',
         'description' => 'Insects bug tracker',
         'greeting' => 'Hello world!'
+    ],
+    'smtp' => [
+        'host'       => 'smtp.example.com',
+        'port'       => 465,
+        'encryption' => 'tls',                  // 'tls', 'ssl'
+        'user'       => 'your@email.com',
+        'password'   => 'your_password',
+        'from_email' => 'your@email.com',
+        'from_name'  => 'Insects Bug Tracker'
     ]
+
 ];

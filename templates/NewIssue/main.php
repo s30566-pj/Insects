@@ -16,6 +16,9 @@
                         <label for="assign-to" id="assign-to-label">Assign to</label>
                         <select name="assign-to" id="assign-to" id="assign-to">
                             <option value="">---</option>
+                            <?php foreach ($users as $user): ?>
+                            <option value='<?=htmlspecialchars($user['user_id'])?>'><?=htmlspecialchars($user["name"])?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="ticket-description" id="ticket-description">
