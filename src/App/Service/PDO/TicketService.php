@@ -21,12 +21,19 @@ class TicketService extends MysqlController
     public function createTicketComment($ticketId, $author_id, $content): bool
     {
         $conn = $this->getMysqlConnect();
-        $stmt = $conn->prepare("INSERT INTO ticket_comments (`ticket_id`, `authosr_id`, `content`) VALUES (:ticket_id, :author_id, :content)");
+        $stmt = $conn->prepare("INSERT INTO ticket_comments (`ticket_id`, `author_id`, `content`) VALUES (:ticket_id, :author_id, :content)");
         return $stmt->execute([
             'ticket_id' => $ticketId,
             'author_id' => $author_id,
             'content' => $content
         ]);
+    }
+
+    public function getTicketComments($ticketId): array{
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("SELECT tc.id, tc.ticket_id, CONCAT(u.first_name, ' ', u.surname) AS author, tc.content, tc.created_at FROM ticket_comments tc LEFT JOIN users u ON tc.author_id = u.id WHERE `ticket_id` = :ticket_id ORDER BY created_at DESC");
+        $stmt->execute(['ticket_id' => $ticketId]);
+        return $stmt->fetchAll();
     }
 
     public function getIssuesAssignedToUser($user_id, $org_id): array{
@@ -66,6 +73,17 @@ class TicketService extends MysqlController
         ]);
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function getTicketInOrganization($org_id, $ticket_id){
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("SELECT t.id, o.name AS organization_name, t.title, t.description, t.status, CONCAT(u1.first_name, ' ', u1.surname) AS reported_by, CONCAT(u2.first_name, ' ', u2.surname) AS assigned_to, t.resolved_at, t.created_at, t.updated_at FROM tickets t JOIN organizations o ON t.organization_id = o.id JOIN users u1 ON t.reported_by = u1.id LEFT JOIN users u2 ON t.assigned_to = u2.id WHERE t.organization_id = :org_id AND t.id = :ticket_id");
+        $stmt->execute([
+            "org_id" => $org_id,
+            "ticket_id" => $ticket_id
+        ]);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
 
 
 }

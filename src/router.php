@@ -2,11 +2,11 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 use App\Controller\ViewController;
 use App\Controller\Authentication\AuthController;
-use App\Service\PDO\OrganizationService;
 use App\Service\PDO\UserController;
 use App\Controller\OrganizationController;
 use App\Service\SessionService;
 use App\Controller\TicketController;
+use App\Service\PDO\TicketService;
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 
 $viewController = new ViewController();
@@ -50,6 +50,13 @@ switch ($path) {
         break;
     case '/org-select':
         $viewController->getSelectOrganizationPage();
+        break;
+    case '/ticket':
+        $viewController->getTicketPage($_GET["id"]);
+        break;
+    case '/create-comment':
+        (new TicketService())->createTicketComment($_GET["id"], $_SESSION['user']->getId(), $_POST['comment'] );
+        header('Location: /ticket?id='.$_GET["id"]);
         break;
     case '/logout':
         (new SessionService())->logout();

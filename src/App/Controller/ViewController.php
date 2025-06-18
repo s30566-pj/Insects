@@ -11,6 +11,8 @@ use App\Service\ViewBuilder\LoginBuilder;
 use App\Service\ViewBuilder\HomeBuilder;
 use App\Service\ViewBuilder\OrgSelectBuilder;
 use App\Service\ViewBuilder\RegisterBuilder;
+use App\Service\ViewBuilder\ShowTicketBuilder;
+
 class ViewController
 {
     public function getStartPage(){
@@ -98,6 +100,15 @@ class ViewController
         if (isset($_SESSION['user']) && isset($_SESSION['organization'])){
             $issuesPageBuilder = new IssuesPageBuilder();
             $issuesPageBuilder->buildIssuesPage();
+        } else{
+            header('Location: /');
+        }
+    }
+
+    public function getTicketPage($ticket_id){
+        if (isset($_SESSION['user']) && isset($_SESSION['organization'])){
+            $showTicketBuilder = new ShowTicketBuilder();
+            $showTicketBuilder->buildTicketPage($ticket_id);
         } else{
             header('Location: /');
         }

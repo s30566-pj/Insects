@@ -16,9 +16,9 @@
                             <th>Title</th> <th>Status</th> <th>Reported by</th> <th>Reported on</th> <th>Assigned_to</th>
                         </tr>
                         <?php foreach ($issues as $issue):?>
-                            <?= "<a href='/ticket?id=".$issue["id"]."'><tr>"
+                            <?= "<tr class='clickable-row' data-href='/ticket?id=".$issue["id"]."'>"
                             . "<td>".htmlspecialchars($issue["title"])."</td>" . "<td>".htmlspecialchars($issue["status"])."</td>". "<td>".htmlspecialchars($issue["reported_by"])."</td>" . "<td>".htmlspecialchars($issue["created_at"])."</td>" . "<td>".htmlspecialchars($issue["assigned_to"])."</td>" .
-                            "</tr></a>"?>
+                            "</tr>"?>
                         <?php endforeach ?>
                     </table>
                 </div>
@@ -26,3 +26,14 @@
         </section>
     </main>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".clickable-row").forEach(function (row) {
+            row.style.cursor = "pointer";
+            row.addEventListener("click", function () {
+                window.location.href = row.getAttribute("data-href");
+            });
+        });
+    });
+</script>
