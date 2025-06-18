@@ -1,9 +1,9 @@
 <div class="homeSection">
     <nav>
         <ul>
-            <li><a href="/">Dashboard</a></li>
-            <li><a href="/issues">Issues</a></li>
-            <li><a href="/create-ticket">New Issue</a></li>
+            <a href="/"><li>Dashboard</li></a>
+            <a href="/issues"><li>Issues</li></a>
+            <a href="/create-ticket"><li>New Issue</li></a>
         </ul>
     </nav>
     <main>
