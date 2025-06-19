@@ -10,6 +10,7 @@ return [
     'misc' => [
         'title' => 'Insects bug tracker',
         'description' => 'Insects bug tracker',
+        'url' => 'https://insects.org',
         'greeting' => 'Hello world!'
     ],
     'smtp' => [
