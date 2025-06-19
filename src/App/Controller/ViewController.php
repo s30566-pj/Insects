@@ -72,6 +72,9 @@ class ViewController
             $orgBuilder->buildCreateOrganizationPage();
             return;
         }
+        $orgBuilder = new CreateOrganizationBuilder();
+        $orgBuilder->buildCreateOrganizationPage();
+
     }
 
     public function getSelectOrganizationPage($status=null): void{
