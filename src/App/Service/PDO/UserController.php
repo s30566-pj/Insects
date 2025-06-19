@@ -44,7 +44,7 @@ class UserController extends MysqlController
         $stmt->execute(['id' => $id]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return (bool) $stmt->fetch(PDO::FETCH_ASSOC);
+        return (bool) $result;
     }
 
     public function isUserInRequestedOrganization($user_id, $organization_id): bool{
