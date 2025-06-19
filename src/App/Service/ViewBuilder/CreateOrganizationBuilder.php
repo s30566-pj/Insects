@@ -12,6 +12,6 @@ class CreateOrganizationBuilder
         $styles = ['/assets/createOrganizationBody.css'];
 
         include __DIR__ . "/../../../../templates/header.php";
-        include __DIR__ . "/../../../../templates/CreateOrganization/body.php";
+        include __DIR__ . "/../../../../templates/CreateOrganization/body.html";
     }
 }

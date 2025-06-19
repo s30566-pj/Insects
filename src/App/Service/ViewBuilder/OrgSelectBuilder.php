@@ -14,7 +14,7 @@ class OrgSelectBuilder
         $orgs=$organizationsService->getOrganizationsByUserId($_SESSION["user"]->getId());
 
         include __DIR__ . "/../../../../templates/header.php";
-        include __DIR__ . "/../../../../templates/SelectOrganization/body.php";
+        include __DIR__ . "/../../../../templates/SelectOrganization/body.html";
     }
 
 
