@@ -40,6 +40,9 @@
                         <th>Title</th><th>Status</th>
                     </tr>
                     <?php foreach ($unassigned as $issue):?>
+                        <?php if($issue['assigned_to']===$_SESSION['user']->getFullName()){
+                            continue;
+                        }?>
                         <?= "<tr class='clickable-row' data-href='/ticket?id=".$issue["id"]."'>"
                         . "<td>".$issue["title"]."</td>" . "<td>".$issue["status"]."</td>".
                         "</tr>"?>
