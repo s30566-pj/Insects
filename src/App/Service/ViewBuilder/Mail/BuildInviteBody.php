@@ -11,7 +11,7 @@ class BuildInviteBody
     {
         $title = Config::getConfigValue('misc', 'title');
         $url = Config::getConfigValue('misc', 'url');
-        $htmlTemplate = file_get_contents(__DIR__ . '/../../../templates/InviteMail/body.html');
+        $htmlTemplate = file_get_contents(__DIR__ . '/../../../../../templates/InviteMail/body.html');
         $replacements = [
             '{{org_name}}' => $org_name,
             '{{invite_link}}' => $url.'/accept?token=abc123',

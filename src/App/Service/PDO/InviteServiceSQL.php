@@ -6,7 +6,7 @@ class InviteServiceSQL extends MysqlController{
 
     function addInvite($org_id, $email, $token, $invited_by, $status, $expires_at){
         $conn = $this->getMysqlConnect();
-        $stmt = $conn->prepare("INSERT INTO organization_invites (organization_id, email, token, invited_by, status, expires_at) VALUES (:org_id, :email, :token, :invited_by, :status, :created_at, :expires_at)");
+        $stmt = $conn->prepare("INSERT INTO organization_invites (organization_id, email, token, invited_by, status, expires_at) VALUES (:org_id, :email, :token, :invited_by, :status, :expires_at)");
         return $stmt->execute([
             'org_id' => $org_id,
             'email' => $email,

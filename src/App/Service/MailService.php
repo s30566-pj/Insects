@@ -23,7 +23,7 @@ class MailService
         $mail->Password   = $this->config['password'];
         $mail->SMTPSecure = $this->config['encryption'];
 
-        $mail->setFrom($this->config['email'], $from_name);
+        $mail->setFrom($this->config['from_email'], $from_name);
         $mail->addAddress($toEmail);
 
         $mail->isHTML(true);

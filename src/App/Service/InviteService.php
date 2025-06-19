@@ -7,6 +7,9 @@ use App\Service\ViewBuilder\Mail\BuildInviteBody;
 class InviteService
 {
     public function invite($email, $user_id, $org_id, $org_name){
+        if (!isset($_SESSION['user']) || !isset($_SESSION['organization'])){
+            header('Location: /');
+        }
         $token = bin2hex(random_bytes(32));
         $invited_by = $user_id;
         $status = 'pending';
@@ -20,7 +23,7 @@ class InviteService
             $user_lastname = $_SESSION['user']->getSurname();
             $username = $user_name . ' ' . $user_lastname;
             $title = 'Invitation to ' . $org_name;
-            $body = (new BuildInviteBody())->getBody($token, $org_name, $email);
+            $body = (new BuildInviteBody())->getBody($token, $org_name, $expires_at);
 
             $mailService = new MailService();
             $mailService->sendMailSMTP($title, $body, $email, $username);

@@ -7,6 +7,7 @@ use App\Controller\OrganizationController;
 use App\Service\SessionService;
 use App\Controller\TicketController;
 use App\Service\PDO\TicketService;
+use App\Service\InviteService;
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 
 $viewController = new ViewController();
@@ -57,6 +58,13 @@ switch ($path) {
     case '/create-comment':
         (new TicketService())->createTicketComment($_GET["id"], $_SESSION['user']->getId(), $_POST['comment'] );
         header('Location: /ticket?id='.$_GET["id"]);
+        break;
+    case '/invite':
+        $viewController->getInvitePage();
+        break;
+    case '/send-invite':
+        (new InviteService())->invite($_POST['to_email'], $_SESSION['user']->getId(), $_SESSION["organization"]->getId(), $_SESSION['organization']->getName());
+        header('Location: /');
         break;
     case '/logout':
         (new SessionService())->logout();

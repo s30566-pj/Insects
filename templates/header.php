@@ -22,6 +22,7 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <?php if (isset($_SESSION['organization'])): ?>
+                    <li><a href="/invite">Invite</a></li>
                     <li><a href="/org-select">Organization</a></li>
                 <?php endif; ?>
                 <?php if (isset($_SESSION['user'])): ?>
