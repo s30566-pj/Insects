@@ -1,10 +1,10 @@
 <?php
 return [
     'db' => [
-        'host' => 'localhost:3306',
-        'name' => 'insects',
-        'user' => 'insects_user',
-        'pass' => 'insects123',
+        'host' => 'localhost',
+        'name' => 'db_name',
+        'user' => 'user_name',
+        'pass' => 'user_password',
         'charset' => 'utf8mb4'
     ],
     'misc' => [
