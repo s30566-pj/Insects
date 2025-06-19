@@ -1,0 +1,78 @@
+body{
+    background-color: #232323;
+    overflow: auto;
+}
+h1{
+    font-size: 5em;
+    color: #505050;
+    margin: 0 0 0 5px;
+}
+h3{
+    margin: 0;
+    font-size: 2em;
+}
+
+.invite-wrapper {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.invite-box {
+    height: 400px;
+    aspect-ratio: 4 / 3;
+    background-color: rgba(170, 170, 170, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.inviteHead{
+    display: flex;
+    width: 100%;
+    height: 15%;
+    align-items: center;
+    justify-content: center;
+}
+
+.invite-form, form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.invite-form{
+    height: 80%;
+}
+.invite-footer{
+    height: 5%;
+}
+.invite-footer > p{
+    margin: 0;
+}
+
+form{
+    align-items: center;
+}
+
+label{
+    font-size: 1.5em;
+}
+
+input{
+    width: 50%;
+    height: 10%;
+    border-radius: 20px;
+    margin: 5px;
+}
+main{
+    .invite-wrapper {
+        height: calc(100dvh - 100px);
+        width: calc(100% - 20px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
