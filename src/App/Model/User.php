@@ -37,6 +37,9 @@ class User{
     public function getPassword(){
         return $this->password;
     }
+    public function getFullName(){
+        return $this->name." ".$this->surname;
+    }
     public function setName($name){
         $this->name = $name;
     }
