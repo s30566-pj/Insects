@@ -65,7 +65,7 @@ class OrganizationController
 
     public function saveOrgToSession($id):void{
         $_SESSION["organization"] = (new OrganizationService())->getOrganizationById($id);
-        SetOrganizationService::setOrganization($id);
+        setcookie("organizationId", $_SESSION["organization"]->getId(), time() + 3600);
     }
 
 }
