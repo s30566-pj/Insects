@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Model\Organization;
 use App\Service\PDO\OrganizationService;
+use App\Service\SetOrganizationService;
+
 class OrganizationController
 {
     public function createOrganization(){
@@ -63,6 +65,7 @@ class OrganizationController
 
     public function saveOrgToSession($id):void{
         $_SESSION["organization"] = (new OrganizationService())->getOrganizationById($id);
+        SetOrganizationService::setOrganization($id);
     }
 
 }

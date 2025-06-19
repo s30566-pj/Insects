@@ -98,4 +98,11 @@ class OrganizationService extends MysqlController{
         }
         return false;
     }
+
+    public function addMemberToOrganizaiton($user_id, $org_id){
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("INSERT INTO user_organization (user_id, organization_id) VALUES (:user_id, :organization_id)");
+        return $stmt->execute(['user_id' => $user_id, 'organization_id' => $org_id]);
+    }
+
 }

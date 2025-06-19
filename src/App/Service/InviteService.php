@@ -2,6 +2,7 @@
 
 namespace App\Service;
 use App\Service\PDO\InviteServiceSQL;
+use App\Service\PDO\OrganizationService;
 use App\Service\ViewBuilder\Mail\BuildInviteBody;
 
 class InviteService
@@ -30,6 +31,22 @@ class InviteService
             return true;
         }
         return false;
+
+    }
+
+    public function acceptInvite($token){
+        if (!isset($_SESSION['user'])){
+            header('Location: /');
+        }
+        $invServSQL= new InviteServiceSQL();
+        $invite=$invServSQL->acceptInvite($token);
+        if($invite){
+            $user_id=$_SESSION['user']->getId();
+            $orgService= new OrganizationService();
+            $orgService->addMemberToOrganizaiton($user_id, $invite["organization_id"]);
+            header('Location: /org-select');
+        }
+        header('Location: /');
 
     }
 

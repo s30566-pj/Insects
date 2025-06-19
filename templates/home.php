@@ -17,9 +17,9 @@
                         <th>Title</th><th>Status</th>
                     </tr>
                     <?php foreach ($assToMeIssue as $issue):?>
-                        <?= "<a href='/ticket?id=".$issue["id"]."'><tr>"
+                        <?= "<tr class='clickable-row' data-href='/ticket?id=".$issue["id"]."'>"
                         . "<td>".$issue["title"]."</td>" . "<td>".$issue["status"]."</td>".
-                        "</tr></a>"?>
+                        "</tr>"?>
                     <?php endforeach ?>
                 </table>
             </div>
@@ -40,9 +40,9 @@
                         <th>Title</th><th>Status</th>
                     </tr>
                     <?php foreach ($unassigned as $issue):?>
-                        <?= "<a href='/ticket?id=".$issue["id"]."'><tr>"
+                        <?= "<tr class='clickable-row' data-href='/ticket?id=".$issue["id"]."'>"
                         . "<td>".$issue["title"]."</td>" . "<td>".$issue["status"]."</td>".
-                        "</tr></a>"?>
+                        "</tr>"?>
                     <?php endforeach ?>
                 </table>
             </div>
@@ -64,9 +64,9 @@
                         <th>Title</th><th>Status</th>
                     </tr>
                     <?php foreach ($reportedByMe as $issue):?>
-                        <?= "<a href='/ticket?id=".$issue["id"]."'><tr>"
+                        <?= "<tr class='clickable-row' data-href='/ticket?id=".$issue["id"]."'>"
                         . "<td>".$issue["title"]."</td>" . "<td>".$issue["status"]."</td>".
-                        "</tr></a>"?>
+                        "</tr>"?>
                     <?php endforeach ?>
                 </table>
             </div>
@@ -87,9 +87,9 @@
                         <th>Title</th><th>Status</th>
                     </tr>
                     <?php foreach ($recentlyResolved as $issue):?>
-                        <?= "<a href='/ticket?id=".$issue["id"]."'><tr>"
+                        <?= "<tr class='clickable-row' data-href='/ticket?id=".$issue["id"]."'>"
                         . "<td>".$issue["title"]."</td>" . "<td>".$issue["status"]."</td>".
-                        "</tr></a>"?>
+                        "</tr>"?>
                     <?php endforeach ?>
                 </table>
             </div>
@@ -101,3 +101,14 @@
     </section>
 </main>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".clickable-row").forEach(function (row) {
+            row.style.cursor = "pointer";
+            row.addEventListener("click", function () {
+                window.location.href = row.getAttribute("data-href");
+            });
+        });
+    });
+</script>

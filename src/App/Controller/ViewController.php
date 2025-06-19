@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\InviteService;
 use App\Service\PDO\UserController;
 use App\Service\SetOrganizationService;
 use App\Service\ViewBuilder\CreateOrganizationBuilder;
@@ -19,7 +20,7 @@ class ViewController
     public function getStartPage(){
         if (! isset($_SESSION['user'])){
             $this->getLoginPage();
-        } elseif (! isset($_SESSION['organization'])){
+        } elseif ((! isset($_SESSION['organization']) || (!is_object($_SESSION['organization'])))){
             $this->getSelectOrganizationPage();
         }
         else{
@@ -39,6 +40,9 @@ class ViewController
             $createOrgBuilder->buildCreateOrganizationPage();
         } elseif (isset($_COOKIE["organizationId"])&& !isset($_SESSION["organization"])){
             SetOrganizationService::setOrganization();
+            header('Location: /');
+        } elseif ($userController->isUserInAnyOrganization($_SESSION['user']->getId())){
+            header('Location: /select-organization');
         }
         else{
             $this->getStartPage();
@@ -124,5 +128,4 @@ class ViewController
             header('Location: /');
         }
     }
-
 }

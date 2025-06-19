@@ -11,7 +11,6 @@ use App\Service\InviteService;
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 
 $viewController = new ViewController();
-
 $base = '/Insects/src/router.php';
 $path = str_starts_with($path, $base) ? substr($path, strlen($base)) : $path;
 
@@ -37,6 +36,7 @@ switch ($path) {
         break;
     case '/select-organization':
         (new OrganizationController())->saveOrgToSession($_GET['org']);
+        setcookie("organizationId", $_SESSION["organization"]->getId(), time() + 3600);
         header('Location: /');
         break;
     case '/create-ticket':
@@ -66,6 +66,8 @@ switch ($path) {
         (new InviteService())->invite($_POST['to_email'], $_SESSION['user']->getId(), $_SESSION["organization"]->getId(), $_SESSION['organization']->getName());
         header('Location: /');
         break;
+    case '/accept':
+        (new InviteService())->acceptInvite($_GET["token"]);
     case '/logout':
         (new SessionService())->logout();
         header('Location: /');

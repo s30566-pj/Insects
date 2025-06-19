@@ -14,7 +14,7 @@ class BuildInviteBody
         $htmlTemplate = file_get_contents(__DIR__ . '/../../../../../templates/InviteMail/body.html');
         $replacements = [
             '{{org_name}}' => $org_name,
-            '{{invite_link}}' => $url.'/accept?token=abc123',
+            '{{invite_link}}' => $url.'/accept?token='.$token,
             '{{token}}' => $token,
             '{{ctitle}}' => $title,
             '{{expires_at}}' => $expires_at

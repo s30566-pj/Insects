@@ -8,6 +8,6 @@ class SessionService
 {
     public function logout(){
         session_destroy();
-        ((new ViewController())->getLoginPage());
+        header('location: /login');
     }
 }

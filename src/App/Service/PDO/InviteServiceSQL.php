@@ -4,7 +4,7 @@ namespace App\Service\PDO;
 
 class InviteServiceSQL extends MysqlController{
 
-    function addInvite($org_id, $email, $token, $invited_by, $status, $expires_at){
+    public function addInvite($org_id, $email, $token, $invited_by, $status, $expires_at){
         $conn = $this->getMysqlConnect();
         $stmt = $conn->prepare("INSERT INTO organization_invites (organization_id, email, token, invited_by, status, expires_at) VALUES (:org_id, :email, :token, :invited_by, :status, :expires_at)");
         return $stmt->execute([
@@ -15,6 +15,13 @@ class InviteServiceSQL extends MysqlController{
             'status' => $status,
             'expires_at' => $expires_at
         ]);
+    }
+
+    public function acceptInvite($token){
+        $conn = $this->getMysqlConnect();
+        $stmt = $conn->prepare("SELECT * FROM organization_invites WHERE token = :token");
+        $stmt->execute(['token' => $token]);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
 }
