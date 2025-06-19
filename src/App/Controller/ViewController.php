@@ -42,7 +42,7 @@ class ViewController
             SetOrganizationService::setOrganization();
             header('Location: /');
         } elseif ($userController->isUserInAnyOrganization($_SESSION['user']->getId())){
-            header('Location: /select-organization');
+            header('Location: /org-select');
         }
         else{
             $this->getStartPage();
